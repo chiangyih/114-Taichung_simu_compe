@@ -546,6 +546,9 @@ void drawTime() {
     sprintf(buf, "%02d:%02d:%02d",
             state.hour, state.minute, state.second);
     tft.print(buf);
+    
+    // 時間下方分隔線
+    tft.drawFastHLine(0, 14, 160, ST77XX_WHITE);
 }
 
 // ======================== 繪製模式指示 ========================
@@ -584,9 +587,13 @@ void drawStationId() {
 
 // ======================== 繪製按鍵文字 ========================
 void drawBtnText() {
-    tft.setTextSize(2);
+    // 字體 size 3，每字寬 18px，高 24px
+    // btn-1 共 5 字，總寬約 90px
+    // 畫面寬 160，置中 X = (160 - 90) / 2 = 35
+    // 畫面高 128，中央區域 y=15~128，置中 Y 約 55
+    tft.setTextSize(3);
     tft.setTextColor(ST77XX_WHITE, ST77XX_BLACK);
-    tft.setCursor(40, 55);
+    tft.setCursor(35, 55);
     tft.print(state.btnText);
 }
 
