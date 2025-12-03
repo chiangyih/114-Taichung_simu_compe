@@ -7,6 +7,8 @@ Namespace PCControl
         Private WithEvents _port As New SerialPort()
         Private _isConnected As Boolean = False
 
+        ' Application Framework 啟動，不需 Shared Sub Main
+
         Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             RefreshPorts()
             UpdateTime()
@@ -36,14 +38,14 @@ Namespace PCControl
                 If _port.IsOpen Then _port.Close()
                 _port.PortName = cmbPorts.SelectedItem?.ToString()
                 _port.BaudRate = 9600
-                _port.NewLine = vbLf
+                _port.NewLine = Environment.NewLine
                 _port.Open()
                 _isConnected = True
                 lblDeviceStatusValue.Text = "Device Online"
-                lblDeviceStatusValue.BackColor = Color.Green
+                lblDeviceStatusValue.BackColor = System.Drawing.Color.Green
                 SendCommand("LED_OPEN")
             Catch ex As Exception
-                MessageBox.Show("連線錯誤: " & ex.Message, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                System.Windows.Forms.MessageBox.Show("連線錯誤: " & ex.Message, "錯誤", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error)
             End Try
         End Sub
 
@@ -56,9 +58,9 @@ Namespace PCControl
                 End If
                 _isConnected = False
                 lblDeviceStatusValue.Text = "Device Offline"
-                lblDeviceStatusValue.BackColor = Color.Red
+                lblDeviceStatusValue.BackColor = System.Drawing.Color.Red
             Catch ex As Exception
-                MessageBox.Show("斷線錯誤: " & ex.Message, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                System.Windows.Forms.MessageBox.Show("斷線錯誤: " & ex.Message, "錯誤", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error)
             End Try
         End Sub
 
@@ -81,7 +83,7 @@ Namespace PCControl
             If Integer.TryParse(valText, val) AndAlso val >= 1 AndAlso val <= 254 Then
                 SendCommand($"L{val}")
             Else
-                MessageBox.Show("請輸入 1-254 之間的數值", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                System.Windows.Forms.MessageBox.Show("請輸入 1-254 之間的數值", "錯誤", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning)
             End If
         End Sub
 
@@ -95,7 +97,7 @@ Namespace PCControl
                 Threading.Thread.Sleep(100)
                 _port.Close()
             End If
-            Application.Exit()
+            System.Windows.Forms.Application.Exit()
         End Sub
 
         Private Sub UpdateSystemInfo()
