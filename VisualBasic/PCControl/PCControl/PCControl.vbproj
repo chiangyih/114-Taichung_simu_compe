@@ -6,7 +6,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{7A1B1D39-7E53-4A2E-9E61-9C6A84B8A3D3}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>PCControl.Module1</StartupObject>
+      <StartupObject></StartupObject>
+      <ApplicationFramework>true</ApplicationFramework>
+      <StartupForm>PCControl.MainForm</StartupForm>
     <RootNamespace>PCControl</RootNamespace>
     <AssemblyName>PCControl</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -32,10 +34,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.IO.Ports" />
+    <Reference Include="System.Management" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Module1.vb" />
     <Compile Include="MainForm.vb">
       <SubType>Form</SubType>
     </Compile>

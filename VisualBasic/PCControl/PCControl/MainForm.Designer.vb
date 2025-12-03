@@ -5,23 +5,23 @@ Namespace PCControl
 
         Private components As System.ComponentModel.IContainer
         Private WithEvents tmrUpdate As System.Windows.Forms.Timer
-        Private lblCurrentTime As System.Windows.Forms.Label
-        Private btnTimeSync As System.Windows.Forms.Button
-        Private cmbMode As System.Windows.Forms.ComboBox
+        Private WithEvents lblCurrentTime As System.Windows.Forms.Label
+        Private WithEvents btnTimeSync As System.Windows.Forms.Button
+        Private WithEvents cmbMode As System.Windows.Forms.ComboBox
         Private grpCardStatus As System.Windows.Forms.GroupBox
-        Private cmbPorts As System.Windows.Forms.ComboBox
-        Private btnOpen As System.Windows.Forms.Button
-        Private btnClose As System.Windows.Forms.Button
+        Private WithEvents cmbPorts As System.Windows.Forms.ComboBox
+        Private WithEvents btnOpen As System.Windows.Forms.Button
+        Private WithEvents btnClose As System.Windows.Forms.Button
         Private lblDeviceStatus As System.Windows.Forms.Label
         Private lblDeviceStatusValue As System.Windows.Forms.Label
-        Private btnExit As System.Windows.Forms.Button
+        Private WithEvents btnExit As System.Windows.Forms.Button
         Private grpSystemInfo As System.Windows.Forms.GroupBox
         Private lblCpuUsage As System.Windows.Forms.Label
         Private lblRamUsage As System.Windows.Forms.Label
         Private grpLedControl As System.Windows.Forms.GroupBox
-        Private txtLedValue As System.Windows.Forms.TextBox
-        Private btnWrite As System.Windows.Forms.Button
-        Private btnRead As System.Windows.Forms.Button
+        Private WithEvents txtLedValue As System.Windows.Forms.TextBox
+        Private WithEvents btnWrite As System.Windows.Forms.Button
+        Private WithEvents btnRead As System.Windows.Forms.Button
 
         <System.Diagnostics.DebuggerStepThrough()> _
         Private Sub InitializeComponent()
