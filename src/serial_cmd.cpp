@@ -40,12 +40,14 @@ void serialUpdate() {
 static void processCommand(const char* cmd) {
     char prefix = cmd[0];
     
-    // 先處理 LED_OPEN / LED_CLOSE（避免與 'L' 前綴的 LED 寫入衝突）
-    // if (strncmp(cmd, "LED_OPEN", 8) == 0) {
-    //     g_state.connected = true;
-    //     Serial.println("OK");
-    //     return;
-    // }
+    // 處理 HELLO 初始化握手命令
+    if (strncmp(cmd, "HELLO", 5) == 0) {
+        g_state.connected = true;
+        Serial.println("OK");
+        return;
+    }
+    
+    // 處理 LED_CLOSE（斷線）
     if (strncmp(cmd, "LED_CLOSE", 9) == 0) {
         g_state.connected = false;
         Serial.println("OK");
@@ -54,16 +56,19 @@ static void processCommand(const char* cmd) {
 
     switch (prefix) {
         case 'T':  // 時間同步
+            g_state.connected = true;
             parseTimeSync(cmd);
             Serial.println("OK");
             break;
             
         case 'S':  // CPU/RAM 資訊
+            g_state.connected = true;
             parseCpuRam(cmd);
             Serial.println("OK");
             break;
             
         case 'R':  // LED 讀取
+            g_state.connected = true;
             if (strlen(cmd) == 1) {
                 sendLedValue();
             } else {
@@ -72,10 +77,12 @@ static void processCommand(const char* cmd) {
             break;
             
         case 'L':  // LED 寫入
+            g_state.connected = true;
             parseLedWrite(cmd);
             break;
             
         case 'M':  // 模式切換
+            g_state.connected = true;
             parseMode(cmd);
             Serial.println("OK");
             break;

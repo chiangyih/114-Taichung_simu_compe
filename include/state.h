@@ -66,6 +66,7 @@ struct SystemState {
     bool lastRgbMode;
     bool lastBtnDisplay;
     DisplayMode lastMode;
+    bool lastConnected;
     bool needRedrawCenter;
 
     // 初始化
@@ -94,7 +95,8 @@ struct SystemState {
         lastRgbMode = false;
         lastBtnDisplay = false;
         lastMode = MODE_C1;
-        needRedrawCenter = true;
+        lastConnected = false;
+        needRedrawCenter = false;
     }
 };
 

@@ -39,9 +39,10 @@ void displayUpdate() {
         displayDrawTime();
     }
 
-    // 模式變化
-    if (g_state.displayMode != g_state.lastMode) {
+    // 模式或連線狀態變化
+    if (g_state.displayMode != g_state.lastMode || g_state.connected != g_state.lastConnected) {
         g_state.lastMode = g_state.displayMode;
+        g_state.lastConnected = g_state.connected;
         displayDrawMode();
         g_state.needRedrawCenter = true;
     }
@@ -104,8 +105,17 @@ void displayDrawTime() {
 void displayDrawMode() {
     tft.setTextSize(1);
     tft.setTextColor(ST77XX_YELLOW, ST77XX_BLACK);
-    tft.setCursor(152, 2);
     
+    // 清除右上角區域
+    tft.fillRect(140, 0, 20, 12, ST77XX_BLACK);
+    
+    // 顯示連線狀態 + 模式
+    if (g_state.connected) {
+        tft.setCursor(140, 2);
+        tft.print("C ");
+    }
+    
+    tft.setCursor(152, 2);
     switch (g_state.displayMode) {
         case MODE_C1: tft.print("1"); break;
         case MODE_C2: tft.print("2"); break;
