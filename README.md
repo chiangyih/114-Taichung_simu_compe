@@ -4,11 +4,51 @@ Last Update: 2025-12-02
 本 README 針對本工作區的練習與教學，整合 `114_PCRepair_Station2_Analysis.md` 與 `MCU_FunctionSpec.md` 的重點，提供快速導覽與實作指南。
 
 ## 任務概要
-- 目標：完成 PC 應用程式 + MCU（Arduino）之 USB 介面卡整合控制。
-- 重點：TFT 顯示、WS2812 LED、按鍵行為、EEPROM 狀態保存、PC 端 Open/Close 與時間同步、CPU/RAM 顯示。
+# 114-Taichung_simu_compe
+本倉庫包含 MCU 介面卡程式、PC 端 Visual Basic 控制程式與相關文件。以下為最新功能與使用方式總覽。
 
-## 硬體與連線
-- MCU：ATmega328P（Nano/UNO 類）
+## MCU（Arduino）最新變更摘要
+- LED 啟動條件：改為僅在收到 `LED_OPEN` 指令後才允許點亮 LED；`LED_CLOSE` 指令關閉允許並強制全滅。
+- 雙鍵 RGB 顯示：同時按住 `S1` 與 `S2` ≥ 0.5 秒，畫面中央顯示 `R/G/B` 數值，且全部 8 顆 WS2812 LED 同步顯示該顏色；數值每 2 秒隨機變化一次；放開即刻回復原狀（畫面中間顯示崗位號碼，LED 依狀態全滅或關閉）。
+- 顯示模式：僅顯示數字模式 `1/2/3/5`，時間僅顯示 `HH:MM:SS`，時間下方有分隔線；開機預設模式保留為 C1/C2（依 EEPROM），但不會自動解鎖。
+- EEPROM：`EEPROM_ADDR_MODE` 保存模式、`EEPROM_ADDR_LEDVAL` 保存 LED 位元值；在雙鍵 RGB 模式下不參考位元值，所有 LED 一律同步顯示顏色。
+- 相依套件：`Adafruit GFX`、`Adafruit ST7735/ST7789`、`Adafruit NeoPixel`。
+
+## PC 端（Visual Basic）控制程式
+- 專案路徑：`VisualBasic/PCControl/PCControl.sln`
+- 功能：
+	- 串列埠連線（Open/Close）、顯示 `Device Status` 狀態
+	- `LED_OPEN` / `LED_CLOSE` 控制 MCU LED 啟動/關閉
+	- `Time Sync`：送出 `Tyyyy/MM/dd HH:mm:ss`
+	- 模式選擇：`M1` / `M2`（可依需求擴充）
+	- 系統資訊：每秒送出 `Scpu=<int>;ram=<used>/<total>` 至 MCU（畫面顯示 CPU/RAM 使用）
+	- LED 腳位讀寫：`R` 讀取當前 LED 值、`L<n>` 寫入（1–254）
+- 畫面：依 113 學年度工科賽 PC 操作畫面重新設計，包含 Current Time、介面卡狀態、系統資訊、LED 腳位讀寫與 EXIT 按鈕。
+
+## 指令協定（最新）
+- `LED_OPEN`：MCU 設定 `connected=true`，允許 LED 顯示（回 `OK`）。
+- `LED_CLOSE`：MCU 設定 `connected=false`，LED 全滅（回 `OK`）。
+- `Tyyyy/MM/dd HH:mm:ss`：時間同步（回 `OK`）。
+- `Scpu=<int>;ram=<used>/<total>`：CPU/RAM 更新，MCU 切至模式 3 顯示（回 `OK`）。
+- `M1` / `M2`：模式切換（回 `OK`）。
+- `R`：回傳 `VAL=<n>`（LED 位元值）。
+- `L<n>`：寫入 LED 位元值（1–254），回 `WRITE OK` 或 `ERR`。
+
+## 建置與執行
+- MCU：使用 PlatformIO
+	- 編譯與上傳：
+		```pwsh
+		pio run --target upload
+		```
+- PC（VB.NET）：使用 Visual Studio 2019/2022
+	- 開啟 `VisualBasic/PCControl/PCControl.sln`，編譯並執行。
+	- 選擇 Arduino COM 埠後按 `Open`，程式將自動送出 `LED_OPEN`。
+
+## 檔案結構重點
+- `include/` 與 `src/`：模組化程式（display、led、buttons、serial_cmd、config、state）
+- `src/serial_cmd.cpp`：新增 `LED_OPEN/LED_CLOSE` 解析，移除 `T/OPEN/CLOSE` 對 LED 連線狀態的影響。
+- `src/led.cpp`：連線檢查，未連線則 `ledAllOff()`；雙鍵 RGB 模式一律 `ledSetAll()` 全亮同步色；`RGB_UPDATE_MS = 2000`。
+- `VisualBasic/PCControl/`：PC 端 WinForms 專案與 UI（依考題版面）。
 - 顯示：TFT LCD（SPI）
 - LED：WS2812 × 8 顆
 - 按鍵：S1、S2、S3、S4
