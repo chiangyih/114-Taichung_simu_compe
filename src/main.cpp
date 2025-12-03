@@ -46,12 +46,8 @@ static void updateTime() {
 
 // ======================== EEPROM 讀取 ========================
 static void loadEEPROM() {
-    uint8_t modeVal = EEPROM.read(EEPROM_ADDR_MODE);
-    if (modeVal <= 1) {
-        g_state.displayMode = (DisplayMode)modeVal;
-    } else {
-        g_state.displayMode = MODE_C1;
-    }
+    // 開機時固定顯示模式 1
+    g_state.displayMode = MODE_C1;
     
     g_state.ledValue = EEPROM.read(EEPROM_ADDR_LEDVAL);
     // 開機不自動進入 MODE_5

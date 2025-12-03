@@ -15,16 +15,17 @@ void ledInit() {
 
 // ======================== 主更新函式 ========================
 void ledUpdate() {
-    // 開機後，必須等 PC 端程式啟動並發送 OPEN/T 指令（connected=true）才允許點亮 LED
-    if (!g_state.connected) {
-        ledAllOff();
-        return;
-    }
-
     if (g_state.rgbModeActive) {
         // 雙鍵 RGB 顯示模式下，要求全部 8 顆 LED 同步顯示顏色
         // 不受 EEPROM 的 ledValue 影響，統一使用全亮同色
         ledSetAll(g_state.rgbR, g_state.rgbG, g_state.rgbB);
+        return;
+    }
+    
+    // 非 RGB 模式時，需等 PC 端連線才允許其他 LED 控制
+    if (!g_state.connected) {
+        ledAllOff();
+        return;
     }
     // 非 RGB 模式時 LED 保持全滅（在按鍵處理時已呼叫 ledAllOff）
 }
