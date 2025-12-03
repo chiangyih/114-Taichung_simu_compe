@@ -16,7 +16,7 @@ Imports System.Reflection
 <Assembly: System.Reflection.AssemblyCompanyAttribute("PC_VB_interface"),  _
  Assembly: System.Reflection.AssemblyConfigurationAttribute("Debug"),  _
  Assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0"),  _
- Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5e28c18a1431707efa057ebe778818170a44eba0"),  _
+ Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+173466e8d3771290656876e06e519f7066a49678"),  _
  Assembly: System.Reflection.AssemblyProductAttribute("PC_VB_interface"),  _
  Assembly: System.Reflection.AssemblyTitleAttribute("PC_VB_interface"),  _
  Assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0"),  _

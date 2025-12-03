@@ -7,16 +7,8 @@
       "RelativeMoniker": "D:0:0:{E897FF4A-29B0-4297-A6D3-091411C6F463}|PC_VB_interface.vbproj|solutionrelative:form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E897FF4A-29B0-4297-A6D3-091411C6F463}|PC_VB_interface.vbproj|d:\\onedrive\\21\u4E0A\u8AB2\u7528\u8CC7\u6599\u593E\\\u5B78\u751F\u7AF6\u8CFD\u6216\u6821\u5916\u7814\u7FD2\\2025_\u5206\u5340\u8207\u5DE5\u79D1\u8CFD\\114\u5DE5\u79D1\u8CFD\\114-taichung_simu_compe\\pc_vb_interface\\form1.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{E897FF4A-29B0-4297-A6D3-091411C6F463}|PC_VB_interface.vbproj|solutionrelative:form1.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E897FF4A-29B0-4297-A6D3-091411C6F463}|PC_VB_interface.vbproj|d:\\onedrive\\21\u4E0A\u8AB2\u7528\u8CC7\u6599\u593E\\\u5B78\u751F\u7AF6\u8CFD\u6216\u6821\u5916\u7814\u7FD2\\2025_\u5206\u5340\u8207\u5DE5\u79D1\u8CFD\\114\u5DE5\u79D1\u8CFD\\114-taichung_simu_compe\\pc_vb_interface\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{E897FF4A-29B0-4297-A6D3-091411C6F463}|PC_VB_interface.vbproj|solutionrelative:form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E897FF4A-29B0-4297-A6D3-091411C6F463}|PC_VB_interface.vbproj|d:\\onedrive\\21\u4E0A\u8AB2\u7528\u8CC7\u6599\u593E\\\u5B78\u751F\u7AF6\u8CFD\u6216\u6821\u5916\u7814\u7FD2\\2025_\u5206\u5340\u8207\u5DE5\u79D1\u8CFD\\114\u5DE5\u79D1\u8CFD\\114-taichung_simu_compe\\pc_vb_interface\\pc_vb_interface.vbproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{E897FF4A-29B0-4297-A6D3-091411C6F463}|PC_VB_interface.vbproj|solutionrelative:pc_vb_interface.vbproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,41 +26,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PC_VB_interface",
-              "DocumentMoniker": "D:\\OneDrive\\21\u4E0A\u8AB2\u7528\u8CC7\u6599\u593E\\\u5B78\u751F\u7AF6\u8CFD\u6216\u6821\u5916\u7814\u7FD2\\2025_\u5206\u5340\u8207\u5DE5\u79D1\u8CFD\\114\u5DE5\u79D1\u8CFD\\114-Taichung_simu_compe\\PC_VB_interface\\PC_VB_interface.vbproj",
-              "RelativeDocumentMoniker": "PC_VB_interface.vbproj",
-              "ToolTip": "D:\\OneDrive\\21\u4E0A\u8AB2\u7528\u8CC7\u6599\u593E\\\u5B78\u751F\u7AF6\u8CFD\u6216\u6821\u5916\u7814\u7FD2\\2025_\u5206\u5340\u8207\u5DE5\u79D1\u8CFD\\114\u5DE5\u79D1\u8CFD\\114-Taichung_simu_compe\\PC_VB_interface\\PC_VB_interface.vbproj",
-              "RelativeToolTip": "PC_VB_interface.vbproj",
-              "ViewState": "AgIAACIAAAAAAAAAAABEwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003380|",
-              "WhenOpened": "2025-12-03T08:21:27.988Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Form1.vb",
               "DocumentMoniker": "D:\\OneDrive\\21\u4E0A\u8AB2\u7528\u8CC7\u6599\u593E\\\u5B78\u751F\u7AF6\u8CFD\u6216\u6821\u5916\u7814\u7FD2\\2025_\u5206\u5340\u8207\u5DE5\u79D1\u8CFD\\114\u5DE5\u79D1\u8CFD\\114-Taichung_simu_compe\\PC_VB_interface\\Form1.vb",
               "RelativeDocumentMoniker": "Form1.vb",
               "ToolTip": "D:\\OneDrive\\21\u4E0A\u8AB2\u7528\u8CC7\u6599\u593E\\\u5B78\u751F\u7AF6\u8CFD\u6216\u6821\u5916\u7814\u7FD2\\2025_\u5206\u5340\u8207\u5DE5\u79D1\u8CFD\\114\u5DE5\u79D1\u8CFD\\114-Taichung_simu_compe\\PC_VB_interface\\Form1.vb",
               "RelativeToolTip": "Form1.vb",
-              "ViewState": "AgIAAJkAAAAAAAAAAABOwJsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAANQAAAAAAAAAAIBhwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-12-03T08:20:45.051Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Form1.Designer.vb",
-              "DocumentMoniker": "D:\\OneDrive\\21\u4E0A\u8AB2\u7528\u8CC7\u6599\u593E\\\u5B78\u751F\u7AF6\u8CFD\u6216\u6821\u5916\u7814\u7FD2\\2025_\u5206\u5340\u8207\u5DE5\u79D1\u8CFD\\114\u5DE5\u79D1\u8CFD\\114-Taichung_simu_compe\\PC_VB_interface\\Form1.Designer.vb",
-              "RelativeDocumentMoniker": "Form1.Designer.vb",
-              "ToolTip": "D:\\OneDrive\\21\u4E0A\u8AB2\u7528\u8CC7\u6599\u593E\\\u5B78\u751F\u7AF6\u8CFD\u6216\u6821\u5916\u7814\u7FD2\\2025_\u5206\u5340\u8207\u5DE5\u79D1\u8CFD\\114\u5DE5\u79D1\u8CFD\\114-Taichung_simu_compe\\PC_VB_interface\\Form1.Designer.vb",
-              "RelativeToolTip": "Form1.Designer.vb",
-              "ViewState": "AgIAABABAAAAAAAAAABUwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-12-03T08:18:58.778Z",
+              "WhenOpened": "2025-12-03T09:04:07.917Z",
               "EditorCaption": ""
             },
             {
@@ -80,7 +46,7 @@
               "ToolTip": "D:\\OneDrive\\21\u4E0A\u8AB2\u7528\u8CC7\u6599\u593E\\\u5B78\u751F\u7AF6\u8CFD\u6216\u6821\u5916\u7814\u7FD2\\2025_\u5206\u5340\u8207\u5DE5\u79D1\u8CFD\\114\u5DE5\u79D1\u8CFD\\114-Taichung_simu_compe\\PC_VB_interface\\Form1.vb [\u8A2D\u8A08]",
               "RelativeToolTip": "Form1.vb [\u8A2D\u8A08]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-12-03T07:52:47.9Z",
+              "WhenOpened": "2025-12-03T08:59:17.045Z",
               "EditorCaption": " [\u8A2D\u8A08]"
             }
           ]

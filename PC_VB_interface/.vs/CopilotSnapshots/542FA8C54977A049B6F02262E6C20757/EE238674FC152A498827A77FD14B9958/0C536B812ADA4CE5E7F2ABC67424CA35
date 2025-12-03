@@ -109,7 +109,12 @@ Public Class Form1
             lblDeviceStatusValue.Text = "Device Online"
             lblDeviceStatusValue.BackColor = Color.LimeGreen
 
-            MessageBox.Show("串口已開啟", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ' 發送 LED_OPEN 命令
+            If serialPort.IsOpen Then
+                serialPort.WriteLine("LED_OPEN")
+            End If
+
+            MessageBox.Show("串口已開啟並發送 LED_OPEN 命令", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         Catch ex As UnauthorizedAccessException
             MessageBox.Show("串口被其他程式佔用，請關閉其他程式後重試", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error)
