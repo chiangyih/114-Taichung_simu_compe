@@ -16,13 +16,9 @@ void ledInit() {
 // ======================== 主更新函式 ========================
 void ledUpdate() {
     if (g_state.rgbModeActive) {
-        if (g_state.ledValue == 255) {
-            // 未設定：全部 LED 同色
-            ledSetAll(g_state.rgbR, g_state.rgbG, g_state.rgbB);
-        } else {
-            // 已設定：依 bit 控制亮滅
-            ledSetByBits(g_state.ledValue, g_state.rgbR, g_state.rgbG, g_state.rgbB);
-        }
+        // 雙鍵 RGB 顯示模式下，要求全部 8 顆 LED 同步顯示顏色
+        // 不受 EEPROM 的 ledValue 影響，統一使用全亮同色
+        ledSetAll(g_state.rgbR, g_state.rgbG, g_state.rgbB);
     }
     // 非 RGB 模式時 LED 保持全滅（在按鍵處理時已呼叫 ledAllOff）
 }
