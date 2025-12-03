@@ -40,10 +40,21 @@ void serialUpdate() {
 static void processCommand(const char* cmd) {
     char prefix = cmd[0];
     
+    // 先處理 LED_OPEN / LED_CLOSE（避免與 'L' 前綴的 LED 寫入衝突）
+    if (strncmp(cmd, "LED_OPEN", 8) == 0) {
+        g_state.connected = true;
+        Serial.println("OK");
+        return;
+    }
+    if (strncmp(cmd, "LED_CLOSE", 9) == 0) {
+        g_state.connected = false;
+        Serial.println("OK");
+        return;
+    }
+
     switch (prefix) {
         case 'T':  // 時間同步
             parseTimeSync(cmd);
-            g_state.connected = true;
             Serial.println("OK");
             break;
             
@@ -69,18 +80,16 @@ static void processCommand(const char* cmd) {
             Serial.println("OK");
             break;
             
-        case 'O':  // OPEN
+        case 'O':  // OPEN（不再作為 LED 啟動條件）
             if (strncmp(cmd, "OPEN", 4) == 0) {
-                g_state.connected = true;
                 Serial.println("OK");
             } else {
                 Serial.println("ERR");
             }
             break;
             
-        case 'C':  // CLOSE
+        case 'C':  // CLOSE（不再作為 LED 關閉條件）
             if (strncmp(cmd, "CLOSE", 5) == 0) {
-                g_state.connected = false;
                 Serial.println("OK");
             } else {
                 Serial.println("ERR");
