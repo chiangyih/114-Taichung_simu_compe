@@ -1,0 +1,50 @@
+﻿Imports System.Management
+Imports System.IO.Ports
+
+Module DiagnosticTool_BluetoothPorts
+    Sub Main()
+        Console.WriteLine("=== 藍牙 COM Port 診斷工具 ===")
+        Console.WriteLine()
+        
+        ' 列出所有 COM Port
+        Console.WriteLine("所有可用的 COM Port:")
+        Dim allPorts() As String = SerialPort.GetPortNames()
+        For Each port As String In allPorts
+            Console.WriteLine($"  {port}")
+        Next
+        Console.WriteLine()
+        
+        ' 使用 WMI 查詢所有包含 COM 的裝置
+        Console.WriteLine("WMI 查詢結果 (所有包含 COM 的裝置):")
+        Try
+            Dim searcher As New ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE Caption LIKE '%(COM%'")
+            For Each obj As ManagementObject In searcher.Get()
+                Dim caption As String = obj("Caption").ToString()
+                Dim deviceId As String = If(obj("DeviceID") IsNot Nothing, obj("DeviceID").ToString(), "N/A")
+                Dim pnpClass As String = If(obj("PNPClass") IsNot Nothing, obj("PNPClass").ToString(), "N/A")
+                
+                Console.WriteLine($"Caption: {caption}")
+                Console.WriteLine($"  DeviceID: {deviceId}")
+                Console.WriteLine($"  PNPClass: {pnpClass}")
+                
+                ' 檢查是否為藍牙裝置
+                If caption.ToLower().Contains("bluetooth") Then
+                    Console.WriteLine($"  >> 這是藍牙裝置!")
+                    If caption.ToLower().Contains("incoming") Then
+                        Console.WriteLine($"  >> 類型: Incoming (應被過濾)")
+                    ElseIf caption.ToLower().Contains("outgoing") OrElse caption.ToLower().Contains("standard") Then
+                        Console.WriteLine($"  >> 類型: Outgoing/Standard (應被選擇)")
+                    Else
+                        Console.WriteLine($"  >> 類型: 未明確標示 (需進一步判斷)")
+                    End If
+                End If
+                Console.WriteLine()
+            Next
+        Catch ex As Exception
+            Console.WriteLine($"錯誤: {ex.Message}")
+        End Try
+        
+        Console.WriteLine("按任意鍵結束...")
+        Console.ReadKey()
+    End Sub
+End Module

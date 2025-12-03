@@ -25,3 +25,5 @@ D:\OneDrive\21上課用資料夾\學生競賽或校外研習\2025_分區與工�
 D:\OneDrive\21上課用資料夾\學生競賽或校外研習\2025_分區與工科賽\114工科賽\114-Taichung_simu_compe\PC_VB_interface\obj\Debug\net8.0-windows\PC_VB_interface.pdb
 D:\OneDrive\21上課用資料夾\學生競賽或校外研習\2025_分區與工科賽\114工科賽\114-Taichung_simu_compe\PC_VB_interface\obj\Debug\net8.0-windows\PC_VB_interface.genruntimeconfig.cache
 D:\OneDrive\21上課用資料夾\學生競賽或校外研習\2025_分區與工科賽\114工科賽\114-Taichung_simu_compe\PC_VB_interface\obj\Debug\net8.0-windows\ref\PC_VB_interface.dll
+D:\OneDrive\21上課用資料夾\學生競賽或校外研習\2025_分區與工科賽\114工科賽\114-Taichung_simu_compe\PC_VB_interface\bin\Debug\net8.0-windows\System.Management.dll
+D:\OneDrive\21上課用資料夾\學生競賽或校外研習\2025_分區與工科賽\114工科賽\114-Taichung_simu_compe\PC_VB_interface\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Management.dll

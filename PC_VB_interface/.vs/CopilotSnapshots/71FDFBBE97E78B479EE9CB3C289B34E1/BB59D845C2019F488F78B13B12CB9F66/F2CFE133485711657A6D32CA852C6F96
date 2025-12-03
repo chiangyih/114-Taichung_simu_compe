@@ -1,0 +1,104 @@
+﻿Imports System.Management
+Imports System.IO.Ports
+Imports System.Windows.Forms
+
+Public Class BluetoothPortDiagnostic
+    Inherits Form
+
+    Private txtOutput As TextBox
+    Private btnScan As Button
+
+    Public Sub New()
+        Me.Text = "藍牙 COM Port 診斷工具"
+        Me.Width = 800
+        Me.Height = 600
+
+        txtOutput = New TextBox()
+        txtOutput.Multiline = True
+        txtOutput.ScrollBars = ScrollBars.Both
+        txtOutput.Dock = DockStyle.Fill
+        txtOutput.Font = New Font("Consolas", 9)
+
+        btnScan = New Button()
+        btnScan.Text = "開始掃描"
+        btnScan.Dock = DockStyle.Top
+        btnScan.Height = 40
+        AddHandler btnScan.Click, AddressOf BtnScan_Click
+
+        Me.Controls.Add(txtOutput)
+        Me.Controls.Add(btnScan)
+    End Sub
+
+    Private Sub BtnScan_Click(sender As Object, e As EventArgs)
+        txtOutput.Clear()
+        ScanPorts()
+    End Sub
+
+    Private Sub ScanPorts()
+        Dim output As New System.Text.StringBuilder()
+
+        output.AppendLine("=== 所有可用的 COM Port ===")
+        Dim allPorts() As String = SerialPort.GetPortNames()
+        For Each port As String In allPorts
+            output.AppendLine($"  {port}")
+        Next
+        output.AppendLine()
+
+        output.AppendLine("=== WMI 查詢結果 (所有包含 COM 的設備) ===")
+        Try
+            Dim searcher As New ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE Caption LIKE '%(COM%'")
+            
+            For Each obj As ManagementObject In searcher.Get()
+                Dim caption As String = If(obj("Caption") IsNot Nothing, obj("Caption").ToString(), "N/A")
+                Dim deviceId As String = If(obj("DeviceID") IsNot Nothing, obj("DeviceID").ToString(), "N/A")
+                Dim name As String = If(obj("Name") IsNot Nothing, obj("Name").ToString(), "N/A")
+                Dim description As String = If(obj("Description") IsNot Nothing, obj("Description").ToString(), "N/A")
+                
+                output.AppendLine($"Caption: {caption}")
+                output.AppendLine($"  Name: {name}")
+                output.AppendLine($"  Description: {description}")
+                output.AppendLine($"  DeviceID: {deviceId}")
+                
+                Dim lowerCaption As String = caption.ToLower()
+                Dim lowerName As String = name.ToLower()
+                
+                ' 檢查是否為藍牙設備
+                If lowerCaption.Contains("bluetooth") OrElse lowerName.Contains("bluetooth") Then
+                    output.AppendLine($"  >> 這是藍牙設備!")
+                    
+                    If lowerCaption.Contains("incoming") OrElse lowerName.Contains("incoming") Then
+                        output.AppendLine($"  >> 類型: Incoming (應該被過濾)")
+                    ElseIf lowerCaption.Contains("outgoing") OrElse lowerName.Contains("outgoing") Then
+                        output.AppendLine($"  >> 類型: Outgoing (應該被選擇)")
+                    ElseIf lowerCaption.Contains("standard serial") OrElse lowerName.Contains("standard serial") Then
+                        output.AppendLine($"  >> 類型: Standard Serial (應該被選擇)")
+                    Else
+                        output.AppendLine($"  >> 類型: 未明確標示 (需判斷)")
+                    End If
+                    
+                    ' 提取 COM 號
+                    Dim comMatch As System.Text.RegularExpressions.Match = 
+                        System.Text.RegularExpressions.Regex.Match(caption, "COM(\d+)")
+                    If comMatch.Success Then
+                        output.AppendLine($"  >> COM Port: {comMatch.Value}")
+                    End If
+                End If
+                
+                output.AppendLine()
+            Next
+        Catch ex As Exception
+            output.AppendLine($"錯誤: {ex.Message}")
+            output.AppendLine($"堆疊追蹤: {ex.StackTrace}")
+        End Try
+
+        txtOutput.Text = output.ToString()
+    End Sub
+End Class
+
+' 程式進入點
+Module DiagnosticProgram
+    Sub Main()
+        Application.EnableVisualStyles()
+        Application.Run(New BluetoothPortDiagnostic())
+    End Sub
+End Module

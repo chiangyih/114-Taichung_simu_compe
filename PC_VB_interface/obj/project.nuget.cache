@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "fWYPOCFqa/w=",
+  "dgSpecHash": "KJTfd7wiB1M=",
   "success": true,
   "projectFilePath": "D:\\OneDrive\\21上課用資料夾\\學生競賽或校外研習\\2025_分區與工科賽\\114工科賽\\114-Taichung_simu_compe\\PC_VB_interface\\PC_VB_interface.vbproj",
   "expectedPackageFiles": [
@@ -10,7 +10,9 @@
     "C:\\Users\\tseng\\.nuget\\packages\\runtime.native.system.io.ports\\8.0.0\\runtime.native.system.io.ports.8.0.0.nupkg.sha512",
     "C:\\Users\\tseng\\.nuget\\packages\\runtime.osx-arm64.runtime.native.system.io.ports\\8.0.0\\runtime.osx-arm64.runtime.native.system.io.ports.8.0.0.nupkg.sha512",
     "C:\\Users\\tseng\\.nuget\\packages\\runtime.osx-x64.runtime.native.system.io.ports\\8.0.0\\runtime.osx-x64.runtime.native.system.io.ports.8.0.0.nupkg.sha512",
-    "C:\\Users\\tseng\\.nuget\\packages\\system.io.ports\\8.0.0\\system.io.ports.8.0.0.nupkg.sha512"
+    "C:\\Users\\tseng\\.nuget\\packages\\system.codedom\\8.0.0\\system.codedom.8.0.0.nupkg.sha512",
+    "C:\\Users\\tseng\\.nuget\\packages\\system.io.ports\\8.0.0\\system.io.ports.8.0.0.nupkg.sha512",
+    "C:\\Users\\tseng\\.nuget\\packages\\system.management\\8.0.0\\system.management.8.0.0.nupkg.sha512"
   ],
   "logs": []
 }
